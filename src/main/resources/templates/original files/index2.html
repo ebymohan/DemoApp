@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Home Page</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  font-family: "Lato", sans-serif;
+}
+
+.sidenav {
+  width: 160px;
+  position: fixed;
+  z-index: 1;
+  top: 110px;
+  left: 10px;
+  background: #eee;
+  overflow-x: hidden;
+  padding: 8px 0;
+}
+
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 16px;
+  color: #2196F3;
+  display: block;
+}
+
+.sidenav a:hover {
+  color: #064579;
+}
+
+.main {
+  margin-left: 170px; /* Same width as the sidebar + left position in px */
+  font-size: 24px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+}
+
+.main2 {
+  margin-left: 180px; /* Same width as the sidebar + left position in px */
+   width: 150px;
+   height: 150px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+</style>
+</head>
+<body>
+    <div style="border:1px solid black;">
+			<center><p>Hello <span th:text="${user}"></span>.</p>
+			<p><a th:href="@{/appInfo}">Application Information</a></p></center>
+	</div>
+  <!--  <p>
+        <a th:href="@{/codeinject?filepath=/tmp;cat /etc/passwd}">CmdInject</a>&nbsp;&nbsp;
+        <a th:href="@{/jsonp/getToken?_callback=test}">JSONP</a>&nbsp;&nbsp;
+        <a th:href="@{/file/pic}">FileUpload</a>&nbsp;&nbsp;
+        <a th:href="@{cors/sec/originFilter}">Cors</a>&nbsp;&nbsp;
+        <a th:href="@{/path_traversal/vul?filepath=../../../../../etc/passwd}">PathTraversal</a>&nbsp;&nbsp;
+        <a th:href="@{sqli/mybatis/vuln01?username=joychou' or '1'='1}">SqlInject</a>&nbsp;&nbsp;
+        <a th:href="@{/ssrf/urlConnection/vuln?url=file:///etc/passwd}">SSRF</a>&nbsp;&nbsp;
+        <a th:href="@{/rce/exec?cmd=whoami}">RCE</a>&nbsp;&nbsp;
+        <a th:href="@{/ooxml/upload}">ooxml XXE</a>&nbsp;&nbsp;
+        <a th:href="@{/xlsx-streamer/upload}">xlsx-streamer XXE</a>
+    </p>
+    <p>...</p>
+    <a th:href="@{/logout}">logout</a> -->
+	
+	<div class="sidenav">
+  <a th:href="@{/env}">Actuator Endpoints</a>
+  <a th:href="@{/path_traversal/vul?filepath=../../../../../etc/passwd}">Path Traversal</a>
+  <a th:href="@{sqli/mybatis/vuln01?username=joychou' or '1'='1}">Sql Injection</a>
+  <a th:href="@{/file/pic}">File Upload</a>
+  <a th:href="@{cors/sec/originFilter}">CORS</a>
+  <a th:href="@{/logout}">Logout</a>
+</div>
+
+<div class="main">
+  <h2>The Vulnerable Code</h2>
+</div> 
+ 
+<div class="main2">
+  <img src="" alt="sample code"/>
+</div>  
+
+</body>
+</html>

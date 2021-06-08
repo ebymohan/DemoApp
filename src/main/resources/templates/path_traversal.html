@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <title>Vulnerable Springboot Application</title>
+  <meta name="description" content="website description" />
+  <meta name="keywords" content="website keywords, website keywords" />
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" type="text/css" href="css/style.css" title="style" />
+</head>
+
+<body>
+  <div id="main">
+    <div id="header">
+      <div id="logo">
+        <div id="logo_text">
+          <!-- class="logo_colour", allows you to change the colour of the text -->
+          <h1><a href="index.html">Demo<span class="logo_colour">_Application</span></a></h1>
+          <h2>Vulnerable Springboot Web Application</h2>
+        </div>
+      </div>
+      <div id="menubar">
+        <ul id="menu">
+          <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
+          <li class="selected"><a href="index.html">Home</a></li>
+         <li><a href="actuator.html">Actuator Endpoints</a></li>
+          <li><a href="path_traversal.html">Path Traversal</a></li>
+          <li><a href="injection.html">Sql Injection</a></li>
+          <li><a href="file_upload.html">File Upload</a></li> 
+		   <!--  <li><a th:href="@{/env}">Actuator Endpoints</a></li>
+			<li><a th:href="@{/path_traversal/vul?filepath=../../../../../etc/passwd}">Path Traversal</a></li>
+			<li><a th:href="@{sqli/mybatis/vuln01?username=joychou' or '1'='1}">Sql Injection</a></li>
+			<li><a th:href="@{/file/pic}">File Upload</a></li>
+			<li><a th:href="@{cors/sec/originFilter}">CORS</a></li>
+			<li><a th:href="@{/logout}">Logout</a></li> -->
+        </ul>
+      </div>
+    </div>
+    <div id="site_content">
+      <div id="content">
+        <!-- insert the page content here -->
+        <h1>Path Traversal</h1>
+        <p>A path traversal attack (also known as directory traversal) aims to access files and directories that are stored outside the web root folder. By manipulating variables that reference files with “dot-dot-slash (../)” sequences and its variations or by using absolute file paths, it may be possible to access arbitrary files and directories stored on file system including application source code or configuration and critical system files.</p>
+		
+		
+       <p><b>Vulnerable Code</b></p>
+	  <center> <img src="img/path_traversal.jpg" alt="Path Traversal" height="350px" width="550px" /></center>
+        <p><h2><a th:href="@{/path_traversal/vul?filepath=/tmp/}">Click Here to access Path Traversal attack scenario</a></h2></p>
+         <b><u>Mitigation</u></b>
+       <p> The most effective way to prevent file path traversal vulnerabilities is to avoid passing user-supplied input to filesystem APIs altogether. </p>
+<p>
+If it is considered unavoidable to pass user-supplied input to filesystem APIs, then two layers of defense should be used together to prevent attacks:
+</p>
+<p>1 The application should validate the user input before processing it. Ideally, the validation should compare against a whitelist of permitted values. If that isn't possible for the required functionality, then the validation should verify that the input contains only permitted content, such as purely alphanumeric characters.</p>
+<p>2. After validating the supplied input, the application should append the input to the base directory and use a platform filesystem API to canonicalize the path. It should verify that the canonicalized path starts with the expected base directory. </p>
+<p>
+Below is an example of some simple Java code to validate the canonical path of a file based on user input:</p>
+<pre>
+File file = new File(BASE_DIRECTORY, userInput);
+if (file.getCanonicalPath().startsWith(BASE_DIRECTORY)){
+    // process file
+}</pre>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

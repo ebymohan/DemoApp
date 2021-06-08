@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <title>Vulnerable Springboot Application</title>
+  <meta name="description" content="website description" />
+  <meta name="keywords" content="website keywords, website keywords" />
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" type="text/css" href="css/style.css" title="style" />
+</head>
+
+<body>
+  <div id="main">
+    <div id="header">
+      <div id="logo">
+        <div id="logo_text">
+          <!-- class="logo_colour", allows you to change the colour of the text -->
+          <h1><a href="index.html">Demo<span class="logo_colour">_Application</span></a></h1>
+          <h2>Vulnerable Springboot Web Application</h2>
+        </div>
+      </div>
+      <div id="menubar">
+        <ul id="menu">
+          <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
+          <li class="selected"><a href="index.html">Home</a></li>
+         <li><a href="actuator.html">Actuator Endpoints</a></li>
+          <li><a href="path_traversal.html">Path Traversal</a></li>
+          <li><a href="injection.html">Sql Injection</a></li>
+          <li><a href="file_upload.html">File Upload</a></li> 
+		   <!--  <li><a th:href="@{/env}">Actuator Endpoints</a></li>
+			<li><a th:href="@{/path_traversal/vul?filepath=../../../../../etc/passwd}">Path Traversal</a></li>
+			<li><a th:href="@{sqli/mybatis/vuln01?username=joychou' or '1'='1}">Sql Injection</a></li>
+			<li><a th:href="@{/file/pic}">File Upload</a></li>
+			<li><a th:href="@{cors/sec/originFilter}">CORS</a></li>
+			<li><a th:href="@{/logout}">Logout</a></li> -->
+        </ul>
+      </div>
+    </div>
+    <div id="site_content">
+      <div id="content">
+        <!-- insert the page content here -->
+        <h1>Exposed Actuator Endpoints</h1>
+        <p>The Actuator endpoints reveal sensitive information about the application. Hence, anyone who has access to the actuator endpoint can know things like the Beans, properties configurations and other metrics about the application. Therefore, it is really important to put some access restriction on those endpoints. </p>
+		
+	
+       <p><b>Vulnerable Code</b></p>
+	  <center><img src="img/actuator.jpg " alt="Actuator Code" height="350px" width="550px" /></center>
+        <p><h2><a th:href="@{/trace}">Click Here to access Actuator Endpoints</a></h2></p>
+        <b><u>Mitigation</u></b>
+        <p>1. Disable unwanted endpoints</p>
+       <p>2. Password Protected Actuator Endpoints </p>
+        <p>To password protect the endpoints, you need to add starter dependency on Spring Security.</p>
+        <b>Gradle</b>
+  <p> <pre>'org.springframework.boot:spring-boot-starter-security'</pre></p>
+<b>Maven</b>
+<pre>
+&lt;dependency&gt;
+  &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+  &lt;artifactId&gt;spring-boot-starter-security&lt;/artifactId&gt;
+&lt;/dependency&gt;
+</pre>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

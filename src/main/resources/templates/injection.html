@@ -1,0 +1,78 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <title>Vulnerable Springboot Application</title>
+  <meta name="description" content="website description" />
+  <meta name="keywords" content="website keywords, website keywords" />
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" type="text/css" href="css/style.css" title="style" />
+</head>
+
+<body>
+  <div id="main">
+    <div id="header">
+      <div id="logo">
+        <div id="logo_text">
+          <!-- class="logo_colour", allows you to change the colour of the text -->
+          <h1><a href="index.html">Demo<span class="logo_colour">_Application</span></a></h1>
+          <h2>Vulnerable Springboot Web Application</h2>
+        </div>
+      </div>
+      <div id="menubar">
+        <ul id="menu">
+          <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
+          <li class="selected"><a href="index.html">Home</a></li>
+         <li><a href="actuator.html">Actuator Endpoints</a></li>
+          <li><a href="path_traversal.html">Path Traversal</a></li>
+          <li><a href="injection.html">Sql Injection</a></li>
+          <li><a href="file_upload.html">File Upload</a></li> 
+		   <!--  <li><a th:href="@{/env}">Actuator Endpoints</a></li>
+			<li><a th:href="@{/path_traversal/vul?filepath=../../../../../etc/passwd}">Path Traversal</a></li>
+			<li><a th:href="@{sqli/mybatis/vuln01?username=joychou' or '1'='1}">Sql Injection</a></li>
+			<li><a th:href="@{/file/pic}">File Upload</a></li>
+			<li><a th:href="@{cors/sec/originFilter}">CORS</a></li>
+			<li><a th:href="@{/logout}">Logout</a></li> -->
+        </ul>
+      </div>
+    </div>
+    <div id="site_content">
+      <div id="content">
+        <!-- insert the page content here -->
+          <h1>SQL Injection</h1>
+        <p>SQL injection usually occurs when you ask a user for input, like their username/userid, and instead of a name/id, the user gives you an SQL statement that you will unknowingly run on your database. </p>
+		
+		
+       <p><b>Vulnerable Code</b></p>
+	  <center> <img src="img/sqli.jpg" alt="SQLi Code" height="350px" width="550px" /></center>
+        <p>
+         <h2> <a th:href="@{sqli/mybatis/vuln01?username=admin' OR 1=1--}">Click here to try SQL Injection attack scenario 1</a> </h2>
+         <h2> <a th:href="@{sqli/mybatis/vuln01?username=admin' SELECT @@version--}">Click here to try SQL Injection attack scenario 2</a> </h2></p>
+        
+          <b><u>Mitigation</u></b>
+       <p>The simplest solution is to</p>
+       <p>1. Validate user inputs</p>
+       <p>2. Use PreparedStatement instead of Statement to execute the query.  </p>
+<pre>
+String query = "SELECT userName, balance "+ 
+      "FROM accounts WHERE userID = ? 
+        and password = ?"; 
+
+try { 
+PreparedStatement statement = connection.prepareStatement(query); 
+statement.setInt(1, request.getParameter("userID")); 
+ResultSet rs = statement.executeQuery(); 
+while (rs.next()) 
+{ 
+  page.addTableRow(rs.getString("userName"), 
+          rs.getFloat("balance")); 
+} 
+} catch (SQLException e) 
+  { ... } 
+
+</pre>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

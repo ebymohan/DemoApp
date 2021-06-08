@@ -1,0 +1,114 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <title>Vulnerable Springboot Application</title>
+  <meta name="description" content="website description" />
+  <meta name="keywords" content="website keywords, website keywords" />
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" type="text/css" href="css/style.css" title="style" />
+</head>
+
+<body>
+  <div id="main">
+    <div id="header">
+      <div id="logo">
+        <div id="logo_text">
+          <!-- class="logo_colour", allows you to change the colour of the text -->
+          <h1><a href="index.html">Demo<span class="logo_colour">_Application</span></a></h1>
+          <h2>Vulnerable Springboot Web Application</h2>
+        </div>
+      </div>
+      <div id="menubar">
+        <ul id="menu">
+          <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
+          <li class="selected"><a href="index.html">Home</a></li>
+         <li><a href="actuator.html">Actuator Endpoints</a></li>
+          <li><a href="path_traversal.html">Path Traversal</a></li>
+          <li><a href="injection.html">Sql Injection</a></li>
+          <li><a href="file_upload.html">File Upload</a></li> 
+		   <!--  <li><a th:href="@{/env}">Actuator Endpoints</a></li>
+			<li><a th:href="@{/path_traversal/vul?filepath=../../../../../etc/passwd}">Path Traversal</a></li>
+			<li><a th:href="@{sqli/mybatis/vuln01?username=joychou' or '1'='1}">Sql Injection</a></li>
+			<li><a th:href="@{/file/pic}">File Upload</a></li>
+			<li><a th:href="@{cors/sec/originFilter}">CORS</a></li>
+			<li><a th:href="@{/logout}">Logout</a></li> -->
+        </ul>
+      </div>
+    </div>
+    <div id="site_content">
+      <div id="content">
+        <!-- insert the page content here -->
+       <h1>Unrestricted File Upload</h1>
+        <p>Various web applications allow users to upload files (such as pictures, images, sounds, ...). Uploaded files may pose a significant risk if not handled correctly. A remote attacker could send a multipart/form-data POST request with a specially-crafted filename or mime type and execute arbitrary code.</p>
+		
+	
+       <p><b>Vulnerable Code</b></p>
+	  <center><img src="img/fileupload.jpg" alt="File Upload Code" height="350px" width="550px" /></center>
+        <p><h2><a th:href="@{/file/pic}">Click here to try Unrestricted File Upload attack</a></h2></p>
+         <b><u>Mitigation</u></b>
+       <p>Following steps are recommended to defend against arbitrary file upload attacks:</p>
+       <p>1. The application should use a whitelist of allowed file types</p>
+       <p>2. The application should use both client-side and server-side input validation to ensure evasion techniques have not been used to bypass the whitelist filter. These evasion techniques could include appending a second file type to the file name (e.g. image.jpg.php) or using trailing space or dots in the file name.</p>
+       <p>3. The application should set a maximum length for the file name, and a maximum size for the file itself.</p>
+<p>4. The directory to which files are uploaded should be outside of the website root.</p>
+<p>5. All uploaded files should be scanned by antivirus software before they are opened.</p>
+<p>6. The application should not use the file name supplied by the user. Instead, the uploaded file should be renamed according to a predetermined convention.</p>
+<pre>
+public class UploadAction extends ActionSupport {
+  private File uploadedFile;
+  // setter and getter for uploadedFile
+   
+  public String execute() {
+    try {
+      // File path and file name are hardcoded for illustration
+      File fileToCreate = new File("filepath", "filename");
+ 
+      boolean textPlain = checkMetaData(uploadedFile, "text/plain");
+      boolean img = checkMetaData(uploadedFile, "image/JPEG");
+      boolean textHtml = checkMetaData(uploadedFile, "text/html");
+ 
+      if (!textPlain &amp;&amp; !img &amp;&amp; !textHtml) {
+        return "ERROR";
+      }    
+ 
+      // Copy temporary file content to this file
+      FileUtils.copyFile(uploadedFile, fileToCreate);
+      return "SUCCESS";
+    } catch (Throwable e) {
+      addActionError(e.getMessage());
+      return "ERROR";
+    }
+  }
+ 
+  public static boolean checkMetaData(
+    File f, String getContentType) {
+    try (InputStream is = new FileInputStream(f)) {
+      ContentHandler contenthandler = new BodyContentHandler();
+      Metadata metadata = new Metadata();
+      metadata.set(Metadata.RESOURCE_NAME_KEY, f.getName());
+      Parser parser = new AutoDetectParser();
+      try {
+        parser.parse(is, contenthandler, metadata, new ParseContext());
+      } catch (SAXException | TikaException e) {
+        // Handle error
+        return false;
+      }
+       
+      if (metadata.get(Metadata.CONTENT_TYPE).equalsIgnoreCase(getContentType)) {
+        return true;
+      } else {
+        return false;
+      }
+    } catch (IOException e) {
+      // Handle error
+      return false;
+    }
+  }
+}
+</pre>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
