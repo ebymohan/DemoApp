@@ -9,6 +9,5 @@ WORKDIR /tmp/DemoApp
 RUN mvn package -f "pom.xml"
 
 FROM tomcat:8-jdk11
-MAINTAINER devsecops
 COPY --from=builder /tmp/DemoApp/target/java-sec-code-1.0.0.war /usr/local/tomcat/webapps
 COPY --from=builder /tmp/DemoApp/tomcat-users.xml /usr/local/tomcat/conf/tomcat-users.xml
