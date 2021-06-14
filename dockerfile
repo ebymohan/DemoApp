@@ -2,7 +2,7 @@ FROM alpine AS builder
 RUN apk update
 RUN apk add git
 RUN apk add maven
-RUN apk add openjdk8
+RUN apk add openjdk11
 WORKDIR /tmp
 RUN git clone https://github.com/ebymohan/DemoApp
 WORKDIR /tmp/DemoApp
