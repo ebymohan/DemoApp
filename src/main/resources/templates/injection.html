@@ -46,8 +46,9 @@
        <p><b>Vulnerable Code</b></p>
 	  <center> <img src="img/sqli.jpg" alt="SQLi Code" height="350px" width="550px" /></center>
         <p>
-         <h2> <a th:href="@{sqli/mybatis/vuln01?username=admin' OR 1=1--}">Click here to try SQL Injection attack scenario 1</a> </h2>
-         <h2> <a th:href="@{sqli/mybatis/vuln01?username=admin' SELECT @@version--}">Click here to try SQL Injection attack scenario 2</a> </h2></p>
+         <h2> <a th:href="@{sqli/mybatis/vuln01?username=admin}">Click here to try out the Orginal Functionality</a> </h2>
+         <h2> <a th:href="@{sqli/mybatis/vuln01?username=admin' OR 1=1--%20}">Click here to try SQL Injection attack scenario 1</a> </h2>
+         <h2> <a th:href="@{sqli/mybatis/vuln01?username=admin' union select 1,'2',@@version--%20}">Click here to try SQL Injection attack scenario 2</a> </h2></p>
         
           <b><u>Mitigation</u></b>
        <p>The simplest solution is to</p>
