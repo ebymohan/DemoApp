@@ -30,8 +30,12 @@ import org.joychou.security.SecurityUtil;
 @RequestMapping("/file")
 public class FileUpload {
 
+
+    private static String OS = System.getProperty("os.name").toLowerCase();
+    
     // Save the uploaded file to this folder
-    private static String UPLOADED_FOLDER = "/tmp/";
+    private static String UPLOADED_FOLDER = "D:\\";
+    // private static String UPLOADED_FOLDER = "/tmp/";
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @GetMapping("/")
@@ -51,11 +55,20 @@ public class FileUpload {
         if (file.isEmpty()) {
             // 赋值给uploadStatus.html里的动态参数message
             redirectAttributes.addFlashAttribute("message", "Please select a file to upload");
+            System.out.println("Empty File");
             return "Please select a file to upload";
         }
 
         try {
             // Get the file and save it somewhere
+            if(OS.indexOf("win") >= 0)
+            {
+                UPLOADED_FOLDER = "D:\\";
+            }
+            else
+            {
+                UPLOADED_FOLDER = "/usr/local/tomcat/temp/";
+            }
             byte[] bytes = file.getBytes();
             Path path = Paths.get(UPLOADED_FOLDER + file.getOriginalFilename());
             Files.write(path, bytes);
@@ -67,7 +80,7 @@ public class FileUpload {
         } catch (IOException e) {
             redirectAttributes.addFlashAttribute("message", "upload failed");
             e.printStackTrace();
-            return "upload failed";
+            return "upload failed"+ e.getMessage();
         }
 
      //return "Uploaded to /tmp/";
