@@ -58,17 +58,24 @@ public class FileUpload {
             System.out.println("Empty File");
             return "Please select a file to upload";
         }
-
-        try {
-            // Get the file and save it somewhere
-            if(OS.indexOf("win") >= 0)
+        if(OS.indexOf("win") >= 0)
             {
                 UPLOADED_FOLDER = "D:\\";
             }
-            else
+            else if (OS.indexOf("mac") >= 0 || OS.indexOf("nix") >= 0
+            || OS.indexOf("nux") >= 0
+            || OS.indexOf("aix") > 0)
             {
                 UPLOADED_FOLDER = "/usr/local/tomcat/temp/";
             }
+            else
+            {
+                UPLOADED_FOLDER = "/tmp/";
+            }
+
+        try {
+            // Get the file and save it somewhere
+            
             byte[] bytes = file.getBytes();
             Path path = Paths.get(UPLOADED_FOLDER + file.getOriginalFilename());
             Files.write(path, bytes);
@@ -80,7 +87,7 @@ public class FileUpload {
         } catch (IOException e) {
             redirectAttributes.addFlashAttribute("message", "upload failed");
             e.printStackTrace();
-            return "upload failed"+ e.getMessage();
+            return "upload failed to"+UPLOADED_FOLDER+" due to Exception "+ e.getMessage();
         }
 
      //return "Uploaded to /tmp/";
