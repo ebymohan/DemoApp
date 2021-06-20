@@ -11,7 +11,7 @@ import java.util.ArrayList;
  *
  * @author JoyChou @2019-07-24
  */
-@Component // 注解@Component表明WebConfig类将被SpringIoC容器扫描装配，并且Bean名称为webConfig
+@Component // @Component WebConfig SpringIoC，Bean webConfig
 public class WebConfig {
 
     private static String[] callbacks;
@@ -28,9 +28,9 @@ public class WebConfig {
     private static ArrayList<String> ssrfBlockIps = new ArrayList<>();
 
     /**
-     * application.properties里object自动转jsonp的referer校验开关
+     * application.properties object jsonp referer
      *
-     * @param jsonpReferCheckEnabled jsonp校验开关
+     * @param jsonpReferCheckEnabled jsonp
      */
     @Value("${joychou.security.jsonp.referer.check.enabled}")
     public void setJsonpReferCheckEnabled(Boolean jsonpReferCheckEnabled) {

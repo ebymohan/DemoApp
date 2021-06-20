@@ -8,7 +8,7 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
 /**
- * 由于CorsFilter和spring security冲突，所以改为下面的代码。
+ * CorsFilter spring security
  */
 @Component
 @Order(Ordered.HIGHEST_PRECEDENCE)

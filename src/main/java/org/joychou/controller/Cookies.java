@@ -1,5 +1,6 @@
 package org.joychou.controller;
 
+import org.joychou.util.WebUtils;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -7,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 
-import org.joychou.util.WebUtils;
 import org.springframework.web.bind.annotation.RestController;
 
 import static org.springframework.web.util.WebUtils.getCookie;

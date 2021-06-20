@@ -20,9 +20,9 @@ public class CustomCorsConfig extends WebMvcRegistrationsAdapter {
         return new WebMvcConfigurerAdapter() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                // 为了支持一级域名，重写了checkOrigin
-                //String[] allowOrigins = {"joychou.org", "http://test.joychou.me"};
-                registry.addMapping("/cors/sec/webMvcConfigurer") // /**表示所有路由path
+                // checkOrigin
+                //String[] allowOrigins = {"devsecops.org", "http://test.devsecops.me"};
+                registry.addMapping("/cors/sec/webMvcConfigurer") // /**path
                         //.allowedOrigins(allowOrigins)
                         .allowedMethods("GET", "POST")
                         .allowCredentials(true);
@@ -38,8 +38,8 @@ public class CustomCorsConfig extends WebMvcRegistrationsAdapter {
 
 
     /**
-     * 自定义Cors处理器
-     * 自定义校验origin，支持一级域名校验 && 多级域名
+     * Cors
+     * origin
      */
     private static class CustomRequestMappingHandlerMapping extends RequestMappingHandlerMapping {
         private CustomRequestMappingHandlerMapping() {

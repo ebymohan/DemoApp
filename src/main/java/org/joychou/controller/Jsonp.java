@@ -3,15 +3,15 @@ package org.joychou.controller;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 
+import org.joychou.config.WebConfig;
 import org.joychou.security.SecurityUtil;
 import org.joychou.util.LoginUtils;
+import org.joychou.util.WebUtils;
 import org.springframework.http.MediaType;
 import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
-import org.joychou.config.WebConfig;
-import org.joychou.util.WebUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;

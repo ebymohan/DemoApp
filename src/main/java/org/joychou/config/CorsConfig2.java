@@ -1,3 +1,4 @@
+package org.joychou.config;
 //package org.joychou.config;
 //
 //import org.springframework.boot.web.servlet.FilterRegistrationBean;

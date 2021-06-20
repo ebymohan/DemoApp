@@ -5,7 +5,7 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 /**
- * 将本地的/tmp/目录的文件映射到http://localhost:8080/image/
+ * /tmp/http://localhost:8080/image/
  */
 @Configuration
 public class imageConfig extends WebMvcConfigurerAdapter{

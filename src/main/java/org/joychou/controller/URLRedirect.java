@@ -1,5 +1,6 @@
 package org.joychou.controller;
 
+import org.joychou.security.SecurityUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,8 +11,6 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-
-import org.joychou.security.SecurityUtil;
 
 /**
  * The vulnerability code and security code of Java url redirect.

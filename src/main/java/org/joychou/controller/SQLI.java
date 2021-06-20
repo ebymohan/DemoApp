@@ -1,8 +1,8 @@
 package org.joychou.controller;
 
 
-import org.joychou.mapper.UserMapper;
 import org.joychou.dao.User;
+import org.joychou.mapper.UserMapper;
 import org.joychou.security.SecurityUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

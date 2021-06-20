@@ -5,13 +5,13 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
-import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+//import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 
 
 @ServletComponentScan // do filter
 @SpringBootApplication
-// @EnableEurekaClient  // 测试Eureka请打开注释，防止控制台一直有warning
+// @EnableEurekaClient  // Eurekai，warning
 public class Application extends SpringBootServletInitializer {
 
     @Override
