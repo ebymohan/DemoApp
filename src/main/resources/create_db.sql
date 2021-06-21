@@ -6,4 +6,4 @@ CREATE TABLE IF NOT EXISTS `users`(
    PRIMARY KEY (`id`)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 INSERT INTO `users` VALUES (1, 'admin', 'admin123');
-INSERT INTO `users` VALUES (2, 'joychou', 'joychou123');
+INSERT INTO `users` VALUES (2, 'eby', 'eby123');
