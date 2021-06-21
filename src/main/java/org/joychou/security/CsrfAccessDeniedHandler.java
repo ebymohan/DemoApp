@@ -30,7 +30,7 @@ public class CsrfAccessDeniedHandler implements AccessDeniedHandler {
 
         response.setContentType(MediaType.TEXT_HTML_VALUE); // content-type: text/html
         response.setStatus(HttpServletResponse.SC_FORBIDDEN); // 403 forbidden
-        response.getWriter().write("CSRF check failed by JoyChou.");  // response contents
+        response.getWriter().write("Dude Come On, Not Cool");  // response contents
     }
 
 }
