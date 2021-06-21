@@ -13,7 +13,7 @@
     <!-- th:action with Spring 3.2+ and Thymeleaf 2.1+ can automatically force Thymeleaf to include the CSRF token as a hidden field -->
     <!-- <form name="f" th:action="@{/csrf/post}" method="post"> -->
     <!-- <form name="f" action="/xml/DocumentBuilder/vuln02" method="post">                                 This worked onlyinlocalhost -->
-    <form name="f" action="xml/DocumentBuilder/vuln02" method="post"> 
+    <form name="f" action="../xml/DocumentBuilder/vuln02" method="post"> 
         <!-- <input type="text" name="payload" /> -->
         ​<textarea id="payload" name="payload" rows="10" cols="70"></textarea>
         <input type="submit" value="Submit" />
