@@ -27,7 +27,7 @@ public class SafeDomainParser {
         ArrayList<String> blockDomains = new ArrayList<>();
 
         try {
-            // 读取resources目录下的文件
+            // resources
             ClassPathResource resource = new ClassPathResource(safeDomainClassPath);
             File file = resource.getFile();
 

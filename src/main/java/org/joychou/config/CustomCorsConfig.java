@@ -13,7 +13,7 @@ import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandl
 public class CustomCorsConfig extends WebMvcRegistrationsAdapter {
 
     /**
-     * 设置cors origin白名单。区分http和https，并且默认不会拦截同域请求。
+     * cors origin。http, https
      */
     @Bean
     public WebMvcConfigurer corsConfigurer() {

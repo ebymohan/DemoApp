@@ -15,7 +15,6 @@ public class WebConfig {
 
     private static String[] callbacks;
     private static Boolean jsonpReferCheckEnabled = false;
-    private static String[] jsonpRefererHost;
     private static String[] referWhitelist;
     private static String[] referUris;
     private static Boolean referSecEnabled = false;
