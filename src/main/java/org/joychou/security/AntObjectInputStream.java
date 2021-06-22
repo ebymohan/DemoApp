@@ -6,7 +6,7 @@ import org.slf4j.LoggerFactory;
 import java.io.*;
 
 /**
- * RASP：Hook java/io/ObjectInputStream类的resolveClass方法
+ * RASP：Hook java/io/ObjectInputStream resolveClass 
  * RASP: https://github.com/baidu/openrasp/blob/master/agent/java/engine/src/main/java/com/baidu/openrasp/hook/DeserializationHook.java
  *
  * Run main method to test.
@@ -20,11 +20,11 @@ public class AntObjectInputStream extends ObjectInputStream {
     }
 
     /**
-     * 只允许反序列化SerialObject class
+     * SerialObject class
      *
-     * 在应用上使用黑白名单校验方案比较局限，因为只有使用自己定义的AntObjectInputStream类，进行反序列化才能进行校验。
-     * 类似fastjson通用类的反序列化就不能校验。
-     * 但是RASP是通过HOOK java/io/ObjectInputStream类的resolveClass方法，全局的检测白名单。
+     * AntObjectInputStream
+     *fastjson。
+     * RASPHOOK java/io/ObjectInputStream resolveClass。
      *
      */
     @Override
@@ -54,19 +54,19 @@ public class AntObjectInputStream extends ObjectInputStream {
         MyObject myObj = new MyObject();
         myObj.name = "world";
 
-        // 创建一个包含对象进行反序列化信息的/tmp/object数据文件
+        //tmp/object
         FileOutputStream fos = new FileOutputStream("/tmp/object");
         ObjectOutputStream os = new ObjectOutputStream(fos);
 
-        // writeObject()方法将myObj对象写入/tmp/object文件
+        // writeObject()myObj /tmp/object
         os.writeObject(myObj);
         os.close();
 
-        // 从文件中反序列化obj对象
+        // obj
         FileInputStream fis = new FileInputStream("/tmp/object");
         AntObjectInputStream ois = new AntObjectInputStream(fis);  // AntObjectInputStream class
 
-        //恢复对象即反序列化
+        
         MyObject objectFromDisk = (MyObject)ois.readObject();
         System.out.println(objectFromDisk.name);
         ois.close();

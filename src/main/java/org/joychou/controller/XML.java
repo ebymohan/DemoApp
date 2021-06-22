@@ -23,7 +23,7 @@ import javax.xml.parsers.SAXParserFactory;
 import javax.xml.parsers.SAXParser;
 
 import org.xml.sax.helpers.DefaultHandler;
-import org.xml.sax.helpers.XMLReaderFactory;
+// import org.xml.sax.helpers.XMLReaderFactory;
 import org.apache.commons.digester3.Digester;
 import org.jdom2.input.SAXBuilder;
 import org.joychou.util.WebUtils;
@@ -40,42 +40,42 @@ public class XML {
     private static Logger logger = LoggerFactory.getLogger(XML.class);
     private static String EXCEPT = "xxe except";
 
-    @PostMapping("/xmlReader/vuln")
-    public String xmlReaderVuln(HttpServletRequest request) {
-        try {
-            String body = WebUtils.getRequestBody(request);
-            logger.info(body);
-            XMLReader xmlReader = XMLReaderFactory.createXMLReader();
-            xmlReader.parse(new InputSource(new StringReader(body)));  // parse xml
-            return "xmlReader xxe vuln code";
-        } catch (Exception e) {
-            logger.error(e.toString());
-            return EXCEPT;
-        }
-    }
+    // @PostMapping("/xmlReader/vuln")
+    // public String xmlReaderVuln(HttpServletRequest request) {
+    //     try {
+    //         String body = WebUtils.getRequestBody(request);
+    //         logger.info(body);
+    //         XMLReader xmlReader = XMLReaderFactory.createXMLReader();
+    //         xmlReader.parse(new InputSource(new StringReader(body)));  // parse xml
+    //         return "xmlReader xxe vuln code";
+    //     } catch (Exception e) {
+    //         logger.error(e.toString());
+    //         return EXCEPT;
+    //     }
+    // }
 
 
-    @RequestMapping(value = "/xmlReader/sec", method = RequestMethod.POST)
-    public String xmlReaderSec(HttpServletRequest request) {
-        try {
-            String body = WebUtils.getRequestBody(request);
-            logger.info(body);
+    // @RequestMapping(value = "/xmlReader/sec", method = RequestMethod.POST)
+    // public String xmlReaderSec(HttpServletRequest request) {
+    //     try {
+    //         String body = WebUtils.getRequestBody(request);
+    //         logger.info(body);
 
-            XMLReader xmlReader = XMLReaderFactory.createXMLReader();
-            // fix code start
-            xmlReader.setFeature("http://apache.org/xml/features/disallow-doctype-decl", true);
-            xmlReader.setFeature("http://xml.org/sax/features/external-general-entities", false);
-            xmlReader.setFeature("http://xml.org/sax/features/external-parameter-entities", false);
-            //fix code end
-            xmlReader.parse(new InputSource(new StringReader(body)));  // parse xml
+    //         XMLReader xmlReader = XMLReaderFactory.createXMLReader();
+    //         // fix code start
+    //         xmlReader.setFeature("http://apache.org/xml/features/disallow-doctype-decl", true);
+    //         xmlReader.setFeature("http://xml.org/sax/features/external-general-entities", false);
+    //         xmlReader.setFeature("http://xml.org/sax/features/external-parameter-entities", false);
+    //         //fix code end
+    //         xmlReader.parse(new InputSource(new StringReader(body)));  // parse xml
 
-        } catch (Exception e) {
-            logger.error(e.toString());
-            return EXCEPT;
-        }
+    //     } catch (Exception e) {
+    //         logger.error(e.toString());
+    //         return EXCEPT;
+    //     }
 
-        return "xmlReader xxe security code";
-    }
+    //     return "xmlReader xxe security code";
+    // }
 
 
     @RequestMapping(value = "/SAXBuilder/vuln", method = RequestMethod.POST)
