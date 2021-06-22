@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 /**
  * Java get real ip. More details: https://joychou.org/web/how-to-get-real-ip.html
  *
- * @author JoyChou @ 2017-12-29
+ *
  */
 @RestController
 @RequestMapping("/ip")

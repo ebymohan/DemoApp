@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * SpEL Injection
  *
- * @author JoyChou @2019-01-17
+ * 
  */
 @RestController
 public class SpEL {

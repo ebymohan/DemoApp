@@ -31,7 +31,6 @@ import org.joychou.util.WebUtils;
 /**
  * Java xxe vuln and security code.
  *
- * @author JoyChou @2017-12-22
  */
 
 @RestController

@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServletRequest;
  * http://localhost:8080/css/..;/exclued/vuln
  * http://localhost:8080/css/..;bypasswaf/exclued/vuln
  *
- * @author JoyChou @2020-03-28
+ * 
  */
 
 @RestController

@@ -9,7 +9,6 @@ import java.util.ArrayList;
 /**
  * Solve can't get value in filter by @Value when not using embed tomcat.
  *
- * @author JoyChou @2019-07-24
  */
 @Component // @Component WebConfig SpringIoC，Bean webConfig
 public class WebConfig {

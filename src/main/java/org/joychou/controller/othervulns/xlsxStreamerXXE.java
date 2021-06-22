@@ -19,7 +19,6 @@ import java.io.IOException;
  * Ref:   https://www.itread01.com/hkpcyyp.html
  * Fix:   update xlsx-streamer to 2.1.0 or above
  *
- * @author JoyChou @2019-09-05
  */
 @Controller
 @RequestMapping("xlsx-streamer")

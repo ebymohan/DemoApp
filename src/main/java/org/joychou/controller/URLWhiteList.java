@@ -14,7 +14,6 @@ import java.util.regex.Pattern;
  * The vulnerability code and security code of Java url whitelist.
  * The security code is checking url whitelist.
  *
- * @author JoyChou (joychou@joychou.org)
  * @version 2018.08.23
  */
 

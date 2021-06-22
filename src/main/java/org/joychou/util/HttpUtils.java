@@ -28,7 +28,7 @@ import java.net.URLConnection;
 import java.util.concurrent.*;
 
 /**
- * @author JoyChou 2020-04-06
+ * 
  */
 public class HttpUtils {
 

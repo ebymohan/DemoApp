@@ -16,8 +16,7 @@ import java.io.IOException;
  * The vulnerability code and security code of Java url redirect.
  * The security code is checking whitelist of url redirect.
  *
- * @author JoyChou (joychou@joychou.org)
- * @version 2017.12.28
+ * 
  */
 
 @Controller

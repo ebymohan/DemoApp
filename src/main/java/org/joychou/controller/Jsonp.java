@@ -17,10 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
 
 
-/**
- * @author JoyChou (joychou@joychou.org) @ 2018.10.24
- * https://github.com/JoyChou93/java-sec-code/wiki/JSONP
- */
+
 
 @RestController
 @RequestMapping("/jsonp")

@@ -19,7 +19,6 @@ public class XStreamRce {
      * Xstream affected version: 1.4.10 or <= 1.4.6
      * Set Content-Type: application/xml
      *
-     * @author JoyChou @2019-07-26
      */
     @PostMapping("/xstream")
     public String parseXml(HttpServletRequest request) throws Exception {

@@ -102,11 +102,11 @@ public class SecurityUtil {
 
 
     /**
-     * 通过自定义白名单域名处理SSRF漏洞。如果URL范围收敛，强烈建议使用该方案。
-     * 这是最简单也最有效的修复方式。因为SSRF都是发起URL请求时造成，大多数场景是图片场景，一般图片的域名都是CDN或者OSS等，所以限定域名白名单即可完成SSRF漏洞修复。
+     * 
+     * SSRF URL, CDN OSS SSRF
      *
-     * @author JoyChou @ 2020-03-30
-     * @param url 需要校验的url
+     * 
+     * @param url 
      * @return Safe url returns true. Dangerous url returns false.
      */
     public static boolean checkSSRFByWhitehosts(String url) {
@@ -115,15 +115,15 @@ public class SecurityUtil {
 
 
     /**
-     * 解析URL的IP，判断IP是否是内网IP。如果有重定向跳转，循环解析重定向跳转的IP。不建议使用该方案。
+     * URL IP
      *
-     * 存在的问题：
-     *   1、会主动发起请求，可能会有性能问题
-     *   2、设置重定向跳转为第一次302不跳转，第二次302跳转到内网IP 即可绕过该防御方案
-     *   3、TTL设置为0会被绕过
+     * 
+     *   1、
+     *   2、302, 302 IP 
+     *   3、TTL
      *
-     * @param url check的url
-     * @return 安全返回true，危险返回false
+     * @param url check url
+     * @return true，false
      */
     @Deprecated
     public static boolean checkSSRF(String url) {
@@ -133,11 +133,6 @@ public class SecurityUtil {
 
 
     /**
-     * 不能使用白名单的情况下建议使用该方案。前提是禁用重定向并且TTL默认不为0。
-     *
-     * 存在问题：
-     *  1、TTL为0会被绕过
-     *  2、使用重定向可绕过
      *
      * @param url The url that needs to check.
      * @return Safe url returns true. Dangerous url returns false.

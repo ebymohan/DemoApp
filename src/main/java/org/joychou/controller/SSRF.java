@@ -16,7 +16,7 @@ import java.net.*;
 /**
  * Java SSRF vuln or security code.
  *
- * @author JoyChou @2017-12-28
+ * 
  */
 
 @RestController

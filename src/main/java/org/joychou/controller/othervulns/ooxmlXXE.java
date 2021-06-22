@@ -24,7 +24,7 @@ import java.util.Iterator;
  * Fix:    Update poi-ooxml to 3.15 or above.
  * Vuln:   3.10 or below exist xxe vuln. 3.14 or below exist dos vuln. So 3.15 or above is safe version.
  *
- * @author JoyChou @2019-09-05
+ * 
  */
 @Controller
 @RequestMapping("ooxml")

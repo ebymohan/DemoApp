@@ -20,7 +20,7 @@ import static org.springframework.web.util.WebUtils.getCookie;
 /**
  * Deserialize RCE using Commons-Collections gadget.
  *
- * @author JoyChou @2018-06-14
+ * 
  */
 @RestController
 @RequestMapping("/deserialize")

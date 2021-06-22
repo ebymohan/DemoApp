@@ -10,9 +10,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 
 
-/**
- * @author JoyChou @2018-01-02
- */
+
 @Controller
 @RequestMapping("/xss")
 public class XSS {

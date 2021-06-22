@@ -24,7 +24,7 @@ import java.util.UUID;
 /**
  * File upload.
  *
- * @author JoyChou @ 2018-08-15
+ * 
  */
 @Controller
 @RequestMapping("/file")

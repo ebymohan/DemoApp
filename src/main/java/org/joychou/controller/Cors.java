@@ -11,10 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * @author JoyChou (joychou@joychou.org) @2018.10.24
- * https://github.com/JoyChou93/java-sec-code/wiki/CORS
- */
+
 
 @RestController
 @RequestMapping("/cors")
