@@ -269,7 +269,6 @@ public class XML {
             StringReader sr = new StringReader(body);
             InputSource is = new InputSource(sr);
             Document document = db.parse(is);  // parse xml
-
             // name value
             StringBuilder result = new StringBuilder();
             NodeList rootNodeList = document.getChildNodes();
