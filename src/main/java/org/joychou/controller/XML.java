@@ -264,25 +264,6 @@ public class XML {
             // String body = WebUtils.getRequestBody(request);
             String body = request.getParameter("payload");
             logger.info("Body of post request:"+body);
-
-
-
-
-
-            // body = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"+
-            // "<!DOCTYPE note ["+
-            // // "<!ENTITY file SYSTEM \"file:/etc/passwd\" >"+
-            // "<!ENTITY file SYSTEM \"file:d:\\secret.txt\" >"+
-            // "]>"+
-            // "<note>"+
-            // " <Author>Mitchell Moser</Author>"+
-            // "  <Subject>Gimme the Loot</Subject>"+
-            // "  <Content>&file;</Content>"+
-            // "</note>";
-
-
-
-
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
             DocumentBuilder db = dbf.newDocumentBuilder();
             StringReader sr = new StringReader(body);
