@@ -39,7 +39,7 @@ public class PathTraversal {
     }
 
     //Can lead to Backdoors, RCE
-    // @GetMapping(value = "/path_traversal/vu", produces = MediaType.TEXT_HTML_VALUE)
+    @GetMapping(value = "/path_traversal/vu", produces = MediaType.TEXT_HTML_VALUE)
     public @ResponseBody byte[] getFile(String filepath) throws IOException {
     Path path = Paths.get(filepath);
       byte[] data = Files.readAllBytes(path);
